@@ -4,14 +4,18 @@ Este repositório contém código para raspar URLs de votações das páginas em
 
 ## Como rodar
 
-Para garantir compatibilidade das versões de pacotes usados, utilize o `renv` da seguinte forma:
+Para garantir compatibilidade das versões de pacotes usados, utilize o `renv` da seguinte forma (pode levar alguns minutos):
 
 ```r
 if(!require(renv)) install.packages("renv")
 renv::restore()
 ```
 
-Isto deve instalar todos os pacotes necessários nas suas versões demandadas. Isto feito, execute o script `0_coleta_links.R`.
+Isto deve instalar todos os pacotes necessários nas suas versões demandadas. Isto feito, execute o script `0_coleta_links.R`:
+
+```r
+source(here::here("0_coleta_links.R"))
+```
 
 
 

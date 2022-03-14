@@ -34,6 +34,7 @@ extrai_links <- function(data){
   # Monta um tibble e retorna
   tibble(textos = textos, links = links) %>%
     filter(str_detect(textos, "votantes por UF")) %>%
+    filter(str_detect(links, ".pdf", negate = TRUE)) %>%
     mutate(links = paste0("https://www.camara.leg.br/internet/votacao/", links)) %>%
     mutate(data = data) %>%
     select(data, links)

@@ -16,19 +16,17 @@ extrai_links <- function(data){
   pag <- "https://www.camara.leg.br/internet/votacao/default.asp?datDia={data}" %>%
     glue::glue() %>%
     request() %>%
-    req_perform()
+    req_perform() %>%
+    resp_body_html() %>%
+    html_nodes("#content a")
 
   # Extrai textos
   textos <- pag %>%
-    resp_body_html() %>%
-    html_nodes("#content a") %>%
     html_text2() %>%
     str_trim()
 
   # Extrai links
   links <- pag %>%
-    resp_body_html() %>%
-    html_nodes("#content a") %>%
     html_attr("href")
 
   # Monta um tibble e retorna
